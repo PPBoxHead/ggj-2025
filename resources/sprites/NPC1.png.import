@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6f0k42orgb8i"
-path="res://.godot/imported/twoside.png-7c48850c1e7f854c50da55bce0cd232b.ctex"
+uid="uid://t5b3q37ltn4a"
+path="res://.godot/imported/NPC1.png-dce5c29506ac342ee4d139317d393d68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/twoside.png"
-dest_files=["res://.godot/imported/twoside.png-7c48850c1e7f854c50da55bce0cd232b.ctex"]
+source_file="res://resources/sprites/NPC1.png"
+dest_files=["res://.godot/imported/NPC1.png-dce5c29506ac342ee4d139317d393d68.ctex"]
 
 [params]
 
