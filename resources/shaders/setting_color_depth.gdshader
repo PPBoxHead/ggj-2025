@@ -11,10 +11,10 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest;
 
 void fragment() {
 	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
-	
+
 	vec2 dith_size = vec2(4, 4); // for GLES2: substitute for the dimensions of the dithering matrix
 	vec2 buf_size = vec2(textureSize(SCREEN_TEXTURE,0));
-	
+
 	if (enabled) {
 		vec3 dith = texture(dither_tex, SCREEN_UV*(buf_size/dith_size)).rgb;
 		dith -= 0.5;
