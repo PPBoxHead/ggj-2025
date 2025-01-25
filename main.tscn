@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdxufb8uijqnk"]
+[gd_scene load_steps=9 format=3 uid="uid://bdxufb8uijqnk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ko2ec"]
 [ext_resource type="PackedScene" uid="uid://dp76ethtax6kg" path="res://testing/test_scene.tscn" id="1_ojphd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://picture_taker.gd" id="5_v463b"]
 [ext_resource type="Material" uid="uid://bw0pjfhsda2sa" path="res://resources/shaders/setting_crt.material" id="6_b1q7b"]
 [ext_resource type="Material" uid="uid://1h54svnwx71t" path="res://resources/shaders/setting_vhs.material" id="7_tm760"]
+[ext_resource type="Texture2D" uid="uid://dglta6coh2tij" path="res://testing/GGJ-2025-HUD.png" id="8_32s8n"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ko2ec")
@@ -84,3 +85,10 @@ mouse_filter = 2
 [node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/VHSRect"]
 copy_mode = 2
 rect = Rect2(0, 0, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 600.0
+offset_bottom = 400.0
+mouse_filter = 2
+texture = ExtResource("8_32s8n")
+stretch_mode = 2
