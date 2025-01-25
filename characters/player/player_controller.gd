@@ -1,27 +1,5 @@
 extends Node3D
 
-enum Transitions {
-	TRANS_BACK,
-	TRANS_BOUNCE,
-	TRANS_CIRC,
-	TRANS_CUBIC,
-	TRANS_ELASTIC,
-	TRANS_EXPO,
-	TRANS_LINEAR,
-	TRANS_QUAD,
-	TRANS_QUART,
-	TRANS_QUINT,
-	TRANS_SINE,
-}
-
-enum Easings {
-	EASE_IN,
-	EASE_IN_OUT,
-	EASE_OUT,
-	EASE_OUT_IN,
-}
-
-
 @export_range(0.0, 1.0, 0.1) var transition_time = 0.3
 @export var tween_trans: Tween.TransitionType
 @export var use_tween_easing: bool = true

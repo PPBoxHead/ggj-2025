@@ -10,7 +10,16 @@ signal game_menu_requested
 ## it should show the main menu and pause the game when paused is set to true
 ## when paused is false, should change some menu things also
 signal game_paused_requested(paused: bool)
+
 ## Emitted when the game starts loading a scene
 signal game_loading_started
 ## Emitted when the game finishes loading a scene
 signal game_loading_finished
+
+
+signal character_dialogue_requested()
+signal character_comment_requested()
+
+signal player_interaction_requested(interaction_type: String)
+
+signal bubble_soap_collected(bubble_color: String)
