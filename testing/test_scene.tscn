@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dp76ethtax6kg"]
 
-[ext_resource type="Texture2D" uid="uid://25xwwsoqy5kv" path="res://resources/sprites/Sprite1.png" id="1_k1xbt"]
+[ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://resources/sprites/Masked.png" id="1_e0dnk"]
 [ext_resource type="Texture2D" uid="uid://cn1ax5jqiutmw" path="res://resources/sprites/PTP-Tile_05-128x128.png" id="2_cr5rj"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
 
@@ -43,7 +43,7 @@ environment = SubResource("Environment_8olj2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -3)
 billboard = 2
 texture_filter = 2
-texture = ExtResource("1_k1xbt")
+texture = ExtResource("1_e0dnk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_ejoo1")
