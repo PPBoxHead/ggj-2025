@@ -38,17 +38,17 @@ func _handle_direction() -> void:
 		_move_direction(Vector3.FORWARD)
 	if Input.is_action_pressed("back") and not back_ray_cast.is_colliding():
 		_move_direction(Vector3.BACK)
-	if Input.is_action_pressed("left") and not left_ray_cast.is_colliding():
-		_move_direction(Vector3.LEFT)
-	if Input.is_action_pressed("right") and not right_ray_cast.is_colliding():
-		_move_direction(Vector3.RIGHT)
+	#if Input.is_action_pressed("left") and not left_ray_cast.is_colliding():
+		#_move_direction(Vector3.LEFT)
+	#if Input.is_action_pressed("right") and not right_ray_cast.is_colliding():
+		#_move_direction(Vector3.RIGHT)
 
 
 func _handle_rotation() -> void:
-	if Input.is_action_pressed("rotate_right"):
+	if Input.is_action_pressed("right"):
 		tween = create_tween().set_trans(tween_trans).set_ease(tween_ease)
 		tween.tween_property(self, "transform:basis", transform.basis.rotated(Vector3.UP, -PI / 2), transition_time)
-	if Input.is_action_pressed("rotate_left"):
+	if Input.is_action_pressed("left"):
 		tween = create_tween().set_trans(tween_trans).set_ease(tween_ease)
 		tween.tween_property(self, "transform:basis", transform.basis.rotated(Vector3.UP, PI / 2), transition_time)
 
