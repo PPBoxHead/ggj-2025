@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=14 format=3 uid="uid://dp76ethtax6kg"]
 
 [ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://resources/sprites/Masked.png" id="1_e0dnk"]
 [ext_resource type="Texture2D" uid="uid://cn1ax5jqiutmw" path="res://resources/sprites/PTP-Tile_05-128x128.png" id="2_cr5rj"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
 [ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="4_mln1q"]
+[ext_resource type="PackedScene" uid="uid://cy11r0ax0oc6c" path="res://screens/combat_ui.tscn" id="5_ayjhs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0kbb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -77,3 +78,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2evy4")
 transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 0, 0.7, -3.4)
 process_material = SubResource("ParticleProcessMaterial_wwapk")
 draw_pass_1 = SubResource("QuadMesh_d734v")
+
+[node name="CombatUi" parent="." instance=ExtResource("5_ayjhs")]
