@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=20 format=3 uid="uid://dp76ethtax6kg"]
 
 [ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://resources/sprites/Masked.png" id="1_e0dnk"]
 [ext_resource type="Environment" uid="uid://dwg78d02iv6ch" path="res://resources/def_environment.tres" id="1_gkbi2"]
@@ -21,7 +21,13 @@ colors = PackedColorArray(0.447059, 0.447059, 0.447059, 0.470588, 1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_icdh3"]
 gradient = SubResource("Gradient_ks3h4")
 
+[sub_resource type="Curve" id="Curve_xipff"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveTexture" id="CurveTexture_3uttj"]
+curve = SubResource("Curve_xipff")
 
 [sub_resource type="Curve" id="Curve_78cqd"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

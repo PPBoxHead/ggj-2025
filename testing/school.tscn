@@ -1,24 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4ecc65m577o"]
+[gd_scene load_steps=20 format=3 uid="uid://d4ecc65m577o"]
 
-[ext_resource type="PackedScene" uid="uid://x4so2v7atfc6" path="res://testing/school.glb" id="1_mel0m"]
+[ext_resource type="PackedScene" uid="uid://ctg5bdwmwvee1" path="res://testing/school.glb" id="1_mel0m"]
+[ext_resource type="Texture2D" uid="uid://bp0dft0ribfm0" path="res://resources/textures/Tile_18-128x128.png" id="2_qpku8"]
+[ext_resource type="Texture2D" uid="uid://1ycadqnts73p" path="res://resources/textures/Bricks_22-128x128.png" id="3_2uq1o"]
 [ext_resource type="Texture2D" uid="uid://blohwodptghp7" path="res://resources/textures/grass_256x256.png" id="3_5ung2"]
+[ext_resource type="Texture2D" uid="uid://tvsnc74b8n1r" path="res://resources/textures/Tile_20-128x128.png" id="4_unm27"]
+[ext_resource type="Texture2D" uid="uid://c54sfk0i0gaag" path="res://resources/textures/Photoreal_Tile_01-512x512.png" id="5_jkitb"]
+[ext_resource type="Texture2D" uid="uid://bvxofltatwnic" path="res://resources/textures/Photoreal_Wood_06-512x512.png" id="6_ongqv"]
+[ext_resource type="Texture2D" uid="uid://bcqky5inu6hyp" path="res://resources/textures/Bricks_25-128x128.png" id="7_t0i48"]
+[ext_resource type="Texture2D" uid="uid://ccobwgwh5fwie" path="res://resources/textures/Tile_09-128x128.png" id="9_2j6nc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbntp"]
-albedo_color = Color(1, 0.748, 0.58, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mphlq"]
+albedo_texture = ExtResource("2_qpku8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5t4f0"]
+albedo_texture = ExtResource("3_2uq1o")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tutha"]
-albedo_color = Color(0.48, 0.844, 1, 1)
+albedo_texture = ExtResource("4_unm27")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orjre"]
+albedo_texture = ExtResource("5_jkitb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14niq"]
+albedo_texture = ExtResource("6_ongqv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpdaf"]
+albedo_texture = ExtResource("7_t0i48")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sikat"]
+albedo_texture = ExtResource("6_ongqv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6npk"]
+albedo_texture = ExtResource("7_t0i48")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxjfl"]
 albedo_texture = ExtResource("3_5ung2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4k67"]
-albedo_color = Color(1, 0.58, 0.951, 1)
+albedo_texture = ExtResource("9_2j6nc")
 
 [node name="school" instance=ExtResource("1_mel0m")]
 
 [node name="Lobby" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_dbntp")
+surface_material_override/0 = SubResource("StandardMaterial3D_mphlq")
+surface_material_override/1 = SubResource("StandardMaterial3D_5t4f0")
 
 [node name="Plane" parent="." index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
@@ -40,6 +66,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
 
 [node name="Plane_006" parent="." index="7"]
 surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
+
+[node name="Hall" parent="." index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_orjre")
+
+[node name="Class_A1" parent="." index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_14niq")
+surface_material_override/1 = SubResource("StandardMaterial3D_dpdaf")
+
+[node name="Class_B1" parent="." index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_sikat")
+surface_material_override/1 = SubResource("StandardMaterial3D_j6npk")
 
 [node name="Courtyard" parent="." index="13"]
 surface_material_override/0 = SubResource("StandardMaterial3D_rxjfl")
