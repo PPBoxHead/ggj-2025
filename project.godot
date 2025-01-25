@@ -28,8 +28,22 @@ window/stretch/mode="viewport"
 naming/node_name_num_separator=3
 naming/script_name_casing=2
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "yellow",
+"res://autoloads/": "yellow",
+"res://resources/": "pink",
+"res://testing/": "blue"
+}
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="mobile"
 camera/depth_of_field/depth_of_field_bokeh_shape=0
@@ -37,7 +51,6 @@ camera/depth_of_field/depth_of_field_bokeh_quality=0
 environment/ssao/quality=1
 environment/ssil/quality=1
 environment/volumetric_fog/use_filter=0
-anti_aliasing/quality/screen_space_aa=1
 occlusion_culling/use_occlusion_culling=true
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
