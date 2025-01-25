@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=13 format=3 uid="uid://dp76ethtax6kg"]
 
 [ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://resources/sprites/Masked.png" id="1_e0dnk"]
 [ext_resource type="Environment" uid="uid://dwg78d02iv6ch" path="res://resources/def_environment.tres" id="1_gkbi2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
 [ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="4_mln1q"]
 [ext_resource type="PackedScene" uid="uid://d4ecc65m577o" path="res://testing/school.tscn" id="5_6l23h"]
+[ext_resource type="PackedScene" uid="uid://cy11r0ax0oc6c" path="res://screens/combat_ui.tscn" id="7_iyke2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ejoo1"]
 size = Vector2(20, 20)
@@ -61,3 +62,5 @@ process_material = SubResource("ParticleProcessMaterial_wwapk")
 draw_pass_1 = SubResource("QuadMesh_d734v")
 
 [node name="school" parent="." instance=ExtResource("5_6l23h")]
+
+[node name="CombatUi" parent="." instance=ExtResource("7_iyke2")]
