@@ -3,11 +3,12 @@ extends Node
 
 # Loading public variables
 var current_scene_path: String
-var current_scene: Node3D
+var current_scene: Node
 
 var game_can_process: bool = false
 
-var current_day_count: int = 0
+var soap_value: int = 0
+const MAX_SOAP_VALUE: int = 5
 
 # Loading private variables
 var _load_time: float = 0.0
@@ -27,12 +28,30 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	SystemEvents.game_new_run_start_requested.connect(_game_start_new_run)
+	SystemEvents.game_run_finished.connect(_game_run_finished)
+	
+	SystemEvents.bubble_soap_collected.connect(set_soap_value)
+
+
+func set_soap_value(value: int) -> void:
+	soap_value += value
+	
+	if soap_value == MAX_SOAP_VALUE:
+		SystemEvents.game_run_finished.emit()
 
 
 func _game_start_new_run() -> void:
-	current_day_count = 0
+	soap_value = 0
 	
-	_scene_load_from_path("res://testing/test_scene.tscn", null)
+	_scene_load_from_path("res://testing/test_scene.tscn")
+
+
+func _game_run_finished() -> void:
+	# Should load finish scene
+	
+	print("You finished the game :D")
+	
+	_scene_load_from_path("res://screens/final_cinematic.tscn")
 
 
 func _scene_load_from_path(scene_path: String, _cur_scene: Node = null) -> void:
