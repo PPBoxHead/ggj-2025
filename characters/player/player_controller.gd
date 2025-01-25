@@ -22,8 +22,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+	if Input.is_action_just_pressed("ui_cancel"):
+		SystemEvents.bubble_soap_collected.emit(1)
 	
 	if tween is Tween:
 		if tween.is_running():

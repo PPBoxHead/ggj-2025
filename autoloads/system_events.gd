@@ -4,6 +4,8 @@ extends Node
 signal game_new_run_start_requested
 ## Emitted when the Continue button is pressed, also emits game_paused_request(false), just a return to play a current run
 signal game_continue_run_requested
+## This one triggers when the soap value is the max one
+signal game_run_finished
 ## When this is emitted, it should show the main menu and pause the game with game_paused_requested(true)
 signal game_menu_requested
 ## Emitted when player press [ESC] button on the keyboard
@@ -22,4 +24,4 @@ signal character_comment_requested()
 
 signal player_interaction_requested(interaction_type: String)
 
-signal bubble_soap_collected(bubble_color: String)
+signal bubble_soap_collected(soap_value: int)

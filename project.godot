@@ -50,6 +50,7 @@ folder_colors={
 "res://autoloads/": "yellow",
 "res://characters/": "red",
 "res://resources/": "pink",
+"res://screens/": "red",
 "res://testing/": "blue"
 }
 
