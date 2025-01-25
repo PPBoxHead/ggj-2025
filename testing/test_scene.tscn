@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://resources/sprites/Masked.png" id="1_e0dnk"]
 [ext_resource type="Texture2D" uid="uid://cn1ax5jqiutmw" path="res://resources/sprites/PTP-Tile_05-128x128.png" id="2_cr5rj"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
-[ext_resource type="Texture2D" uid="uid://cs1xml38rwl37" path="res://resources/sprites/Bubbles.png" id="4_mln1q"]
+[ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="4_mln1q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0kbb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
