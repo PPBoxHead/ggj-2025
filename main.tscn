@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdxufb8uijqnk"]
+[gd_scene load_steps=8 format=3 uid="uid://bdxufb8uijqnk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ko2ec"]
 [ext_resource type="PackedScene" uid="uid://dp76ethtax6kg" path="res://testing/test_scene.tscn" id="1_ojphd"]
+[ext_resource type="Material" uid="uid://56ju2qbief0c" path="res://resources/shaders/setting_noise.material" id="4_i63r4"]
+[ext_resource type="Material" uid="uid://cmx38ci7nix60" path="res://resources/shaders/setting_color_depth.material" id="5_ksw4q"]
 [ext_resource type="Script" path="res://picture_taker.gd" id="5_v463b"]
+[ext_resource type="Material" uid="uid://bw0pjfhsda2sa" path="res://resources/shaders/setting_crt.material" id="6_b1q7b"]
+[ext_resource type="Material" uid="uid://1h54svnwx71t" path="res://resources/shaders/setting_vhs.material" id="7_tm760"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ko2ec")
@@ -25,3 +29,58 @@ render_target_update_mode = 4
 
 [node name="PictureTaker" type="Node" parent="."]
 script = ExtResource("5_v463b")
+
+[node name="5-PostProcessLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="NoiseRect" type="ColorRect" parent="5-PostProcessLayer"]
+material = ExtResource("4_i63r4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/NoiseRect"]
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
+
+[node name="ColorDepthRect" type="ColorRect" parent="5-PostProcessLayer"]
+material = ExtResource("5_ksw4q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/ColorDepthRect"]
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
+
+[node name="ScanlinesRect" type="ColorRect" parent="5-PostProcessLayer"]
+material = ExtResource("6_b1q7b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/ScanlinesRect"]
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
+
+[node name="VHSRect" type="ColorRect" parent="5-PostProcessLayer"]
+material = ExtResource("7_tm760")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/VHSRect"]
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
