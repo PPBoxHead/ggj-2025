@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bay57uomk6lqa"
-path.s3tc="res://.godot/imported/Bubbles.png-22ade2a0096d1f790edbbd4e0ff5cc88.s3tc.ctex"
+uid="uid://blohwodptghp7"
+path.s3tc="res://.godot/imported/grass_256x256.png-c96d02981ce959a1a37999b383476a18.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/sprites/Bubbles.png"
-dest_files=["res://.godot/imported/Bubbles.png-22ade2a0096d1f790edbbd4e0ff5cc88.s3tc.ctex"]
+source_file="res://resources/textures/grass_256x256.png"
+dest_files=["res://.godot/imported/grass_256x256.png-c96d02981ce959a1a37999b383476a18.s3tc.ctex"]
 
 [params]
 
