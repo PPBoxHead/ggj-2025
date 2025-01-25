@@ -58,6 +58,16 @@ text = "Result"
 [node name="Result" type="Label" parent="VSplitContainer/VBoxContainer-2"]
 layout_mode = 2
 
+[node name="QTButton" type="Button" parent="VSplitContainer"]
+visible = false
+layout_mode = 2
+text = "Press Here Very Fast"
+
+[node name="QTTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="pressed" from="VSplitContainer/VBoxContainer/HBoxContainer/Paper" to="." method="_on_button_pressed" binds= ["paper"]]
 [connection signal="pressed" from="VSplitContainer/VBoxContainer/HBoxContainer/Rock" to="." method="_on_button_pressed" binds= ["rock"]]
 [connection signal="pressed" from="VSplitContainer/VBoxContainer/HBoxContainer/Scissors" to="." method="_on_button_pressed" binds= ["scissors"]]
+[connection signal="pressed" from="VSplitContainer/QTButton" to="." method="_on_qt_button_pressed"]
+[connection signal="timeout" from="QTTimer" to="." method="_on_qt_timer_timeout"]
