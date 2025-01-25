@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=9 format=3 uid="uid://dp76ethtax6kg"]
 
-[ext_resource type="Texture2D" uid="uid://q0dkwgtxm0d3" path="res://resources/sprites/image.png" id="1_gb0is"]
+[ext_resource type="Texture2D" uid="uid://25xwwsoqy5kv" path="res://resources/sprites/Sprite1.png" id="1_k1xbt"]
 [ext_resource type="Texture2D" uid="uid://cn1ax5jqiutmw" path="res://resources/sprites/PTP-Tile_05-128x128.png" id="2_cr5rj"]
+[ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0kbb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -39,13 +40,12 @@ shadow_enabled = true
 environment = SubResource("Environment_8olj2")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -2.4)
 texture_filter = 2
-texture = ExtResource("1_gb0is")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9)
+texture = ExtResource("1_k1xbt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 mesh = SubResource("PlaneMesh_ejoo1")
 surface_material_override/0 = SubResource("StandardMaterial3D_2evy4")
+
+[node name="Player" parent="." instance=ExtResource("3_bjgjy")]

@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdxufb8uijqnk"]
+[gd_scene load_steps=4 format=3 uid="uid://bdxufb8uijqnk"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_ko2ec"]
 [ext_resource type="PackedScene" uid="uid://dp76ethtax6kg" path="res://testing/test_scene.tscn" id="1_ojphd"]
-[ext_resource type="Material" uid="uid://56ju2qbief0c" path="res://resources/shaders/setting_noise.material" id="1_whcmu"]
-[ext_resource type="Material" uid="uid://cmx38ci7nix60" path="res://resources/shaders/setting_color_depth.material" id="2_d6x5c"]
-[ext_resource type="Material" uid="uid://1h54svnwx71t" path="res://resources/shaders/setting_vhs.material" id="3_ealpp"]
+[ext_resource type="Script" path="res://picture_taker.gd" id="5_v463b"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_ko2ec")
 
-[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+[node name="GameViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,48 +15,13 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="GameViewport" type="SubViewport" parent="ViewportContainer"]
+[node name="GameViewport" type="SubViewport" parent="GameViewportContainer"]
 handle_input_locally = false
 screen_space_aa = 1
 size = Vector2i(600, 400)
 render_target_update_mode = 4
 
-[node name="TestScene" parent="ViewportContainer/GameViewport" instance=ExtResource("1_ojphd")]
+[node name="TestScene" parent="GameViewportContainer/GameViewport" instance=ExtResource("1_ojphd")]
 
-[node name="1-PostProcessLayer" type="CanvasLayer" parent="."]
-
-[node name="NoiseRect" type="ColorRect" parent="1-PostProcessLayer"]
-material = ExtResource("1_whcmu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="1-PostProcessLayer/NoiseRect"]
-copy_mode = 2
-rect = Rect2(0, 0, 0, 0)
-
-[node name="ColorDepthRect" type="ColorRect" parent="1-PostProcessLayer"]
-material = ExtResource("2_d6x5c")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="1-PostProcessLayer/ColorDepthRect"]
-copy_mode = 2
-rect = Rect2(0, 0, 0, 0)
-
-[node name="VHSRect" type="ColorRect" parent="1-PostProcessLayer"]
-material = ExtResource("3_ealpp")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="1-PostProcessLayer/VHSRect"]
-copy_mode = 2
-rect = Rect2(0, 0, 0, 0)
+[node name="PictureTaker" type="Node" parent="."]
+script = ExtResource("5_v463b")

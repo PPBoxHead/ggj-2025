@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbmubw2qn4hw8"]
+
+[ext_resource type="Script" path="res://autoloads/system_globals.gd" id="1_irtuv"]
+[ext_resource type="Material" uid="uid://56ju2qbief0c" path="res://resources/shaders/setting_noise.material" id="2_3k4ml"]
+[ext_resource type="Material" uid="uid://cmx38ci7nix60" path="res://resources/shaders/setting_color_depth.material" id="3_k8h0n"]
+[ext_resource type="Material" uid="uid://1h54svnwx71t" path="res://resources/shaders/setting_vhs.material" id="4_j4eaa"]
+
+[sub_resource type="Animation" id="Animation_cex15"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("4-FadeLayer/FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c8yvs"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("4-FadeLayer/FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ebm5f"]
+_data = {
+"RESET": SubResource("Animation_cex15"),
+"fade": SubResource("Animation_c8yvs")
+}
+
+[node name="SystemGlobals" type="Node"]
+process_mode = 3
+script = ExtResource("1_irtuv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ebm5f")
+}
+
+[node name="4-FadeLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="FadeRect" type="ColorRect" parent="4-FadeLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="5-PostProcessLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="NoiseRect" type="ColorRect" parent="5-PostProcessLayer"]
+material = ExtResource("2_3k4ml")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/NoiseRect"]
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
+
+[node name="ColorDepthRect" type="ColorRect" parent="5-PostProcessLayer"]
+material = ExtResource("3_k8h0n")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/ColorDepthRect"]
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
+
+[node name="VHSRect" type="ColorRect" parent="5-PostProcessLayer"]
+material = ExtResource("4_j4eaa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/VHSRect"]
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
