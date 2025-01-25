@@ -38,6 +38,10 @@ func _handle_direction() -> void:
 		_move_direction(Vector3.FORWARD)
 	if Input.is_action_pressed("back") and not back_ray_cast.is_colliding():
 		_move_direction(Vector3.BACK)
+	#if Input.is_action_pressed("left") and not left_ray_cast.is_colliding():
+		#_move_direction(Vector3.LEFT)
+	#if Input.is_action_pressed("right") and not right_ray_cast.is_colliding():
+		#_move_direction(Vector3.RIGHT)
 
 
 func _handle_rotation() -> void:

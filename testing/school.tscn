@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4ecc65m577o"]
+
+[ext_resource type="PackedScene" uid="uid://x4so2v7atfc6" path="res://testing/school.glb" id="1_mel0m"]
+[ext_resource type="Texture2D" uid="uid://blohwodptghp7" path="res://resources/textures/grass_256x256.png" id="3_5ung2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbntp"]
+albedo_color = Color(1, 0.748, 0.58, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tutha"]
+albedo_color = Color(0.48, 0.844, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxjfl"]
+albedo_texture = ExtResource("3_5ung2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4k67"]
+albedo_color = Color(1, 0.58, 0.951, 1)
+
+[node name="school" instance=ExtResource("1_mel0m")]
+
+[node name="Lobby" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dbntp")
+
+[node name="Plane" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
+
+[node name="Plane_001" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
+
+[node name="Plane_002" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
+
+[node name="Plane_003" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
+
+[node name="Plane_004" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
+
+[node name="Plane_005" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
+
+[node name="Plane_006" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tutha")
+
+[node name="Courtyard" parent="." index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rxjfl")
+
+[node name="Infirmary" parent="." index="14"]
+surface_material_override/0 = SubResource("StandardMaterial3D_f4k67")

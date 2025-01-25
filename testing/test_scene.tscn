@@ -1,28 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=12 format=3 uid="uid://dp76ethtax6kg"]
 
 [ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://resources/sprites/Masked.png" id="1_e0dnk"]
-[ext_resource type="Texture2D" uid="uid://cn1ax5jqiutmw" path="res://resources/sprites/PTP-Tile_05-128x128.png" id="2_cr5rj"]
+[ext_resource type="Environment" uid="uid://dwg78d02iv6ch" path="res://resources/def_environment.tres" id="1_gkbi2"]
+[ext_resource type="Texture2D" uid="uid://cn1ax5jqiutmw" path="res://resources/textures/PTP-Tile_05-128x128.png" id="2_cr5rj"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
 [ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="4_mln1q"]
-[ext_resource type="PackedScene" uid="uid://cy11r0ax0oc6c" path="res://screens/combat_ui.tscn" id="5_ayjhs"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0kbb"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_4x6qf"]
-sky_material = SubResource("ProceduralSkyMaterial_w0kbb")
-
-[sub_resource type="Environment" id="Environment_8olj2"]
-background_mode = 1
-sky = SubResource("Sky_4x6qf")
-tonemap_mode = 1
-glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0, 0, 0, 1)
-fog_density = 1.0
-fog_depth_begin = 0.0
-fog_depth_end = 5.0
+[ext_resource type="PackedScene" uid="uid://d4ecc65m577o" path="res://testing/school.tscn" id="5_6l23h"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ejoo1"]
 size = Vector2(20, 20)
@@ -54,12 +37,8 @@ size = Vector2(0.5, 0.5)
 
 [node name="TestScene" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_8olj2")
+environment = ExtResource("1_gkbi2")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -3)
@@ -69,14 +48,16 @@ texture_filter = 2
 texture = ExtResource("1_e0dnk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_ejoo1")
 surface_material_override/0 = SubResource("StandardMaterial3D_2evy4")
 
 [node name="Player" parent="." instance=ExtResource("3_bjgjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 0, 0.7, -3.4)
 process_material = SubResource("ParticleProcessMaterial_wwapk")
 draw_pass_1 = SubResource("QuadMesh_d734v")
 
-[node name="CombatUi" parent="." instance=ExtResource("5_ayjhs")]
+[node name="school" parent="." instance=ExtResource("5_6l23h")]
