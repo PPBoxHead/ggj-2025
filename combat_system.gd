@@ -103,6 +103,7 @@ func finish_combat() -> void:
 	print("This is finished, like, finished")
 	self.visible = false
 	qtTimer.stop()
+	SystemEvents.bubble_soap_collected.emit(1)
 
 
 func reset_combat() -> void:

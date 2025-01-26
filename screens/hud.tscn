@@ -45,7 +45,7 @@ texture = ExtResource("1_bmhji")
 stretch_mode = 2
 flip_h = true
 
-[node name="TextureRect" type="TextureRect" parent="CanisterRect-4"]
+[node name="Soap4" type="TextureRect" parent="CanisterRect-4"]
 visible = false
 material = ExtResource("2_tux3g")
 layout_mode = 0
@@ -66,7 +66,7 @@ texture = ExtResource("1_bmhji")
 stretch_mode = 2
 flip_h = true
 
-[node name="TextureRect" type="TextureRect" parent="CanisterRect-3"]
+[node name="Soap3" type="TextureRect" parent="CanisterRect-3"]
 visible = false
 material = ExtResource("2_tux3g")
 layout_mode = 0
@@ -87,7 +87,7 @@ texture = ExtResource("1_bmhji")
 stretch_mode = 2
 flip_h = true
 
-[node name="TextureRect" type="TextureRect" parent="CanisterRect-2"]
+[node name="Soap2" type="TextureRect" parent="CanisterRect-2"]
 visible = false
 material = ExtResource("2_tux3g")
 layout_mode = 0
@@ -107,7 +107,7 @@ offset_bottom = 399.0
 texture = ExtResource("1_bmhji")
 flip_h = true
 
-[node name="TextureRect" type="TextureRect" parent="CanisterRect"]
+[node name="Soap1" type="TextureRect" parent="CanisterRect"]
 visible = false
 material = ExtResource("2_tux3g")
 layout_mode = 0
