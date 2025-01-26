@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cficrvdl56q2a"]
+[gd_scene load_steps=9 format=3 uid="uid://cficrvdl56q2a"]
 
 [ext_resource type="Script" path="res://characters/player/player_controller.gd" id="1_4b3st"]
+[ext_resource type="AudioStream" uid="uid://bt5pmpxmj0fb5" path="res://resources/audio/sfx/Step1.wav" id="2_ijlf7"]
+[ext_resource type="AudioStream" uid="uid://crrg88iskga2" path="res://resources/audio/sfx/Step2.wav" id="3_phjxi"]
+[ext_resource type="AudioStream" uid="uid://b5i74th5r4r3q" path="res://resources/audio/sfx/Step3.wav" id="4_s6hi2"]
 
 [sub_resource type="Animation" id="Animation_fo6ac"]
 length = 0.001
@@ -44,6 +47,7 @@ _data = {
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_4b3st")
+steps_sfx = Array[AudioStream]([ExtResource("2_ijlf7"), ExtResource("3_phjxi"), ExtResource("4_s6hi2")])
 
 [node name="HeadMarker" type="Marker3D" parent="."]
 
@@ -88,3 +92,6 @@ shape = SubResource("SphereShape3D_wsmow")
 remote_path = NodePath("../Area3D")
 update_rotation = false
 update_scale = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -8.0

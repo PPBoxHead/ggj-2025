@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cn1ax5jqiutmw" path="res://resources/textures/PTP-Tile_05-128x128.png" id="2_cr5rj"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
 [ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="4_mln1q"]
-[ext_resource type="PackedScene" path="res://testing/school.tscn" id="5_6l23h"]
+[ext_resource type="PackedScene" uid="uid://d4ecc65m577o" path="res://testing/school.tscn" id="5_6l23h"]
 [ext_resource type="AudioStream" uid="uid://0b8x3s4f0qgp" path="res://resources/audio/Track1_Declick.wav" id="7_0gdoo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ejoo1"]
@@ -65,5 +65,5 @@ draw_pass_1 = SubResource("QuadMesh_d734v")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_0gdoo")
-volume_db = -3.0
+volume_db = -8.0
 autoplay = true
