@@ -59,3 +59,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8)
 
 [node name="Walter" parent="NPCs" instance=ExtResource("12_kggmy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0, -11.4)
+
+[node name="ThisNodeIsTheEnd" type="Node3D" parent="."]

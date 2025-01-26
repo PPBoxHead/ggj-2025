@@ -101,13 +101,16 @@ func _get_closest_enemy() -> void:
 	var closest_distance: float = INF
 	var closest_node: Node3D = null
 	
-	var enemies_list = get_parent().get_node("Enemies")
+	var enemies_list = get_parent().get_node("Enemies").get_children()
 	
-	for enemy: Node3D in enemies_list.get_children():
-		var dist: float = self.global_position.distance_to(enemy.global_position)
-		if dist <= closest_distance:
-			closest_distance = dist
-			closest_node = enemy
+	if enemies_list.size() == 0:
+		closest_node = get_parent().get_node("ThisNodeIsTheEnd")
+	else:
+		for enemy: Node3D in enemies_list:
+			var dist: float = self.global_position.distance_to(enemy.global_position)
+			if dist <= closest_distance:
+				closest_distance = dist
+				closest_node = enemy
 			
 	SystemEvents.update_compass.emit(self, closest_node.global_position)
 
