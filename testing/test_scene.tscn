@@ -37,17 +37,14 @@ autoplay = true
 [node name="Masked" parent="Enemies" instance=ExtResource("7_h2h7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9)
 
-[node name="Twoside" parent="Enemies" instance=ExtResource("7_i4uh7")]
+[node name="Twoside-2" parent="Enemies" instance=ExtResource("7_i4uh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
-script = null
 
 [node name="Unmasked" parent="Enemies" instance=ExtResource("8_yudw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -9)
-script = null
 
 [node name="Who" parent="Enemies" instance=ExtResource("9_me3o4")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, -9)
-script = null
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
 
 [node name="NPCs" type="Node3D" parent="."]
 

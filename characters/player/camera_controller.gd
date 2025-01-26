@@ -26,6 +26,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	if get_parent().lock_input:
+		return
+	
 	if Input.is_action_just_pressed("trigger_first_person_look"):
 		lock_view = !lock_view
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
@@ -35,6 +38,9 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if get_parent().lock_input:
+		return
+		
 	if lock_view:
 		horizontal_marker.rotate_y(input_look.x)
 		vertical_marker.rotate_x(input_look.y)

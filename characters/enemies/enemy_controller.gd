@@ -5,5 +5,5 @@ extends Node3D
 func die() -> void:
 	$Area3D/CollisionShape3D.disabled = true
 	$AnimationPlayer.play("die")
-	await $AnimationPlayer.animation_finished
+	await $GPUParticles3D.finished
 	queue_free()

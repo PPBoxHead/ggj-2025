@@ -43,7 +43,9 @@ func _physics_process(_delta: float) -> void:
 		if tween.is_running():
 			return
 	
-	if !head_marker.lock_view or !lock_input:
+	if lock_input: return
+	
+	if !head_marker.lock_view:
 		_handle_direction()
 		_handle_rotation()
 
@@ -87,6 +89,7 @@ func _move_direction(local_direction: Vector3) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.get_parent().is_in_group("target"):
+		lock_input = true
 		SystemEvents.start_combat.emit(area.get_parent())
 	if area.get_parent().is_in_group("npc"):
 		can_interact = true
@@ -109,6 +112,8 @@ func _get_closest_enemy() -> void:
 
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
+	if area.get_parent().is_in_group("target"):
+		lock_input = false
 	if area.get_parent().is_in_group("npc"):
 		can_interact = false
 		interactable_npc = null
