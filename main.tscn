@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdxufb8uijqnk"]
+[gd_scene load_steps=8 format=3 uid="uid://c7ki4qk6hxmj8"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_ko2ec"]
-[ext_resource type="PackedScene" uid="uid://dp76ethtax6kg" path="res://testing/test_scene.tscn" id="1_ojphd"]
+[ext_resource type="PackedScene" uid="uid://bv7x01p3os16l" path="res://screens/menu_screen.tscn" id="4_87wkb"]
 [ext_resource type="PackedScene" uid="uid://cuu3l670vfemu" path="res://screens/hud.tscn" id="4_eqcio"]
 [ext_resource type="Material" uid="uid://56ju2qbief0c" path="res://resources/shaders/setting_noise.material" id="4_i63r4"]
 [ext_resource type="Material" uid="uid://cmx38ci7nix60" path="res://resources/shaders/setting_color_depth.material" id="5_ksw4q"]
@@ -10,7 +9,6 @@
 [ext_resource type="Material" uid="uid://1h54svnwx71t" path="res://resources/shaders/setting_vhs.material" id="7_tm760"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_ko2ec")
 
 [node name="GameViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -26,12 +24,34 @@ screen_space_aa = 1
 size = Vector2i(600, 400)
 render_target_update_mode = 4
 
-[node name="TestScene" parent="GameViewportContainer/GameViewport" instance=ExtResource("1_ojphd")]
-
 [node name="PictureTaker" type="Node" parent="."]
 script = ExtResource("5_v463b")
 
 [node name="HUD" parent="." instance=ExtResource("4_eqcio")]
+visible = false
+
+[node name="MenuScreen" parent="." instance=ExtResource("4_87wkb")]
+
+[node name="PlayButton" parent="MenuScreen/ButtonTexture" index="0" node_paths=PackedStringArray("hud")]
+hud = NodePath("../../../HUD")
+
+[node name="ExitButton" parent="MenuScreen/ButtonTexture-3" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 25.0
+offset_right = -94.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect-2" parent="MenuScreen" index="6"]
+layout_mode = 0
+
+[node name="TextureRect-3" parent="MenuScreen" index="7"]
+layout_mode = 0
 
 [node name="5-PostProcessLayer" type="CanvasLayer" parent="."]
 layer = 5
@@ -87,3 +107,5 @@ mouse_filter = 2
 [node name="BackBufferCopy" type="BackBufferCopy" parent="5-PostProcessLayer/VHSRect"]
 copy_mode = 2
 rect = Rect2(0, 0, 0, 0)
+
+[editable path="MenuScreen"]
