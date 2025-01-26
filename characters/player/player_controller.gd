@@ -69,6 +69,7 @@ func _handle_rotation() -> void:
 		tween = create_tween().set_trans(tween_trans).set_ease(tween_ease)
 		tween.tween_property(self, "transform:basis", transform.basis.rotated(Vector3.UP, PI / 2), transition_time)
 	_get_closest_enemy()
+	_get_closest_npc()
 
 
 func _move_direction(local_direction: Vector3) -> void:
@@ -84,7 +85,7 @@ func _move_direction(local_direction: Vector3) -> void:
 	audio_player.stream = steps_sfx[rand_num]
 	audio_player.play()
 	_get_closest_enemy()
-		
+	_get_closest_npc()
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
@@ -110,6 +111,22 @@ func _get_closest_enemy() -> void:
 			
 	SystemEvents.update_compass.emit(self, closest_node.global_position)
 
+func _get_closest_npc() -> void:
+	var closest_distance: float = INF
+	var closest_node: Node3D = null
+	
+	var npc_list = get_parent().get_node("NPCs").get_children()
+	
+	if npc_list.size() == 0:
+		return
+	
+	for npc: Node3D in npc_list:
+		var dist: float = self.global_position.distance_to(npc.global_position)
+		if dist <= closest_distance:
+			closest_distance = dist
+			closest_node = npc
+			
+	SystemEvents.update_npc_compass.emit(self, closest_node.global_position)
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	if area.get_parent().is_in_group("target"):
