@@ -25,8 +25,11 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={}
 directories/dtl_directory={
+"blue_baby_timeline": "res://resources/dialoge_timelines/blue_baby_timeline.dtl",
+"brain_timeline": "res://resources/dialoge_timelines/brain_timeline.dtl",
 "gasp_timeline": "res://resources/dialoge_timelines/gasp_timeline.dtl",
-"test_timeline": "res://resources/dialoge_timelines/test_timeline.dtl"
+"test_timeline": "res://resources/dialoge_timelines/test_timeline.dtl",
+"walter_timeline": "res://resources/dialoge_timelines/walter_timeline.dtl"
 }
 layout/style_list=["res://resources/dialoge_timelines/style.tres"]
 layout/default_style="res://resources/dialoge_timelines/style.tres"

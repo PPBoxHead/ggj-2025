@@ -18,7 +18,7 @@ overrides = {
 "next_indicator_animation": "1",
 "normal_font": "\"res://resources/fonts/CrayonLibre.ttf\"",
 "text_alignment": "1",
-"text_size": "24.0",
+"text_size": "22.0",
 "text_use_global_font": "false",
 "text_use_global_size": "false"
 }
