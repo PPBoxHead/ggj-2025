@@ -1,82 +1,462 @@
-[gd_scene load_steps=8 format=3 uid="uid://cy11r0ax0oc6c"]
+[gd_scene load_steps=16 format=3 uid="uid://cy11r0ax0oc6c"]
 
 [ext_resource type="Script" path="res://combat_system.gd" id="1_5hxsh"]
-[ext_resource type="Texture2D" uid="uid://cqnn3ayd1ig60" path="res://resources/sprites/hands/HandPaperHuman.png" id="2_26pfx"]
-[ext_resource type="Texture2D" uid="uid://cycarkn5etaa0" path="res://resources/sprites/hands/HandPaperFoe.png" id="2_gd2uv"]
-[ext_resource type="Texture2D" uid="uid://bflnxyb5yuu10" path="res://resources/sprites/hands/HandRockHuman.png" id="3_b2w08"]
-[ext_resource type="Texture2D" uid="uid://ba806ov3sguo4" path="res://resources/sprites/hands/HandRockFoe.png" id="3_oqaoi"]
-[ext_resource type="Texture2D" uid="uid://b7so6emulk36t" path="res://resources/sprites/hands/HandScissorsHuman.png" id="4_cfea5"]
-[ext_resource type="Texture2D" uid="uid://chmsdrwr6xxvs" path="res://resources/sprites/hands/HandScissorsFoe.png" id="4_pu08t"]
+[ext_resource type="PackedScene" uid="uid://cuu3l670vfemu" path="res://screens/hud.tscn" id="8_cqbl3"]
+[ext_resource type="Texture2D" uid="uid://dyojdvjabx6g0" path="res://screens/RPSPlayer1.png" id="8_xrk08"]
+[ext_resource type="Texture2D" uid="uid://ba3hfk347sjku" path="res://screens/RPSPlayer3.png" id="9_2maip"]
+[ext_resource type="Texture2D" uid="uid://by3kvuxjq7c4y" path="res://screens/RPSPlayer2.png" id="10_p6bmk"]
+[ext_resource type="Texture2D" uid="uid://dpid8kcxsyil5" path="res://screens/RPSmonster1.png" id="11_5rf0l"]
+[ext_resource type="Texture2D" uid="uid://b3kecaigndffe" path="res://screens/RPSmonster3.png" id="12_y1pcj"]
+[ext_resource type="Texture2D" uid="uid://cxbm0cebmaf3p" path="res://screens/RPSmonster2.png" id="13_oaoxn"]
 
-[node name="CombatUi" type="VBoxContainer"]
+[sub_resource type="Animation" id="Animation_dw0ph"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyOptions/EnemyHandTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, -16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerOptions/PaperButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerOptions/RockButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, 400)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerOptions/ScissorsButton:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, 400)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerOptions/RockButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerOptions/ScissorsButton:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerOptions/PaperButton:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_iletd"]
+resource_name = "paper_choosed"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerOptions/RockButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(256, 64), Vector2(256, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerOptions/ScissorsButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(384, 104), Vector2(384, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerOptions/PaperButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 120)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerOptions/RockButton:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerOptions/ScissorsButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerOptions/PaperButton:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_q88mo"]
+resource_name = "rock_choosed"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerOptions/PaperButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(120, 120), Vector2(120, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerOptions/RockButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerOptions/ScissorsButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(384, 104), Vector2(384, 400)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerOptions/PaperButton:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerOptions/ScissorsButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerOptions/RockButton:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5a616"]
+resource_name = "scissors_choosed"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerOptions/PaperButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(120, 120), Vector2(120, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerOptions/RockButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(256, 64), Vector2(256, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerOptions/ScissorsButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, 104)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerOptions/ScissorsButton:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerOptions/RockButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerOptions/PaperButton:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gs4j0"]
+resource_name = "show_enemy_hand"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyOptions/EnemyHandTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(384, -16), Vector2(384, 168)]
+}
+
+[sub_resource type="Animation" id="Animation_gae05"]
+resource_name = "start_combat"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerOptions/PaperButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(120, 400), Vector2(120, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerOptions/RockButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(256, 400), Vector2(256, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerOptions/ScissorsButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(384, 400), Vector2(384, 104)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kdpvc"]
+_data = {
+"RESET": SubResource("Animation_dw0ph"),
+"paper_choosed": SubResource("Animation_iletd"),
+"rock_choosed": SubResource("Animation_q88mo"),
+"scissors_choosed": SubResource("Animation_5a616"),
+"show_enemy_hand": SubResource("Animation_gs4j0"),
+"start_combat": SubResource("Animation_gae05")
+}
+
+[node name="CombatUi" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5hxsh")
-enemyPaperHand = ExtResource("2_gd2uv")
-enemyRockHand = ExtResource("3_oqaoi")
-enemyScissorsHand = ExtResource("4_pu08t")
+enemyPaperHand = ExtResource("11_5rf0l")
+enemyRockHand = ExtResource("12_y1pcj")
+enemyScissorsHand = ExtResource("13_oaoxn")
+
+[node name="PlayerOptions" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="PaperButton" type="TextureButton" parent="PlayerOptions"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 400.0
+offset_right = 248.0
+offset_bottom = 684.0
+texture_normal = ExtResource("8_xrk08")
+
+[node name="RockButton" type="TextureButton" parent="PlayerOptions"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 400.0
+offset_right = 384.0
+offset_bottom = 684.0
+texture_normal = ExtResource("9_2maip")
+
+[node name="ScissorsButton" type="TextureButton" parent="PlayerOptions"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 400.0
+offset_right = 512.0
+offset_bottom = 684.0
+texture_normal = ExtResource("10_p6bmk")
+
+[node name="EnemyOptions" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="EnemyHandTexture" type="TextureRect" parent="EnemyOptions"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = -16.0
+offset_right = 512.0
+offset_bottom = 268.0
+rotation = -3.14159
+texture = ExtResource("11_5rf0l")
 
 [node name="VSplitContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-
-[node name="CenterContainer" type="VBoxContainer" parent="VSplitContainer"]
-layout_mode = 2
-
-[node name="LabelEnemyMovement" type="Label" parent="VSplitContainer/CenterContainer"]
-layout_mode = 2
-text = "Enemy Movement"
-
-[node name="EnemyResult" type="Label" parent="VSplitContainer/CenterContainer"]
-layout_mode = 2
-text = "
-"
-
-[node name="EnemyHand" type="TextureRect" parent="VSplitContainer/CenterContainer"]
-layout_mode = 2
-expand_mode = 2
-stretch_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer"]
-layout_mode = 2
-
-[node name="LabelPlayerMovement" type="Label" parent="VSplitContainer/VBoxContainer"]
-layout_mode = 2
-text = "Player Movement"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Paper" type="Button" parent="VSplitContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Paper"
-icon = ExtResource("2_26pfx")
-
-[node name="Rock" type="Button" parent="VSplitContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Rock
-"
-icon = ExtResource("3_b2w08")
-
-[node name="Scissors" type="Button" parent="VSplitContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Scissors"
-icon = ExtResource("4_cfea5")
-
-[node name="VBoxContainer-2" type="VBoxContainer" parent="VSplitContainer"]
-layout_mode = 2
-
-[node name="LabelResult" type="Label" parent="VSplitContainer/VBoxContainer-2"]
-layout_mode = 2
-text = "Result"
-
-[node name="Result" type="Label" parent="VSplitContainer/VBoxContainer-2"]
-layout_mode = 2
+offset_top = 104.0
+offset_right = 600.0
+offset_bottom = 135.0
 
 [node name="QTButton" type="Button" parent="VSplitContainer"]
-visible = false
 layout_mode = 2
 text = "Press Here Very Fast"
 
@@ -84,8 +464,16 @@ text = "Press Here Very Fast"
 wait_time = 0.5
 one_shot = true
 
-[connection signal="pressed" from="VSplitContainer/VBoxContainer/HBoxContainer/Paper" to="." method="_on_button_pressed" binds= ["paper"]]
-[connection signal="pressed" from="VSplitContainer/VBoxContainer/HBoxContainer/Rock" to="." method="_on_button_pressed" binds= ["rock"]]
-[connection signal="pressed" from="VSplitContainer/VBoxContainer/HBoxContainer/Scissors" to="." method="_on_button_pressed" binds= ["scissors"]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kdpvc")
+}
+
+[node name="HUD" parent="." instance=ExtResource("8_cqbl3")]
+layout_mode = 1
+
+[connection signal="pressed" from="PlayerOptions/PaperButton" to="." method="_on_button_pressed" binds= ["paper"]]
+[connection signal="pressed" from="PlayerOptions/RockButton" to="." method="_on_button_pressed" binds= ["rock"]]
+[connection signal="pressed" from="PlayerOptions/ScissorsButton" to="." method="_on_button_pressed" binds= ["scissors"]]
 [connection signal="pressed" from="VSplitContainer/QTButton" to="." method="_on_qt_button_pressed"]
 [connection signal="timeout" from="QTTimer" to="." method="_on_qt_timer_timeout"]
