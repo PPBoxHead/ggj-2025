@@ -137,3 +137,6 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 	if area.get_parent().is_in_group("npc"):
 		can_interact = false
 		interactable_npc = null
+	if area.get_parent().is_in_group("final_weapon") and SystemGlobals.soap_value == SystemGlobals.MAX_SOAP_VALUE:
+		SystemEvents.game_run_finished.emit()
+		

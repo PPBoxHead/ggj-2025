@@ -144,6 +144,7 @@ texture = ExtResource("6_rr8d4")
 stretch_mode = 2
 
 [node name="BlueCompass" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 29.0
 offset_right = 60.0

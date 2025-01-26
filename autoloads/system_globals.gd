@@ -8,7 +8,7 @@ var current_scene: Node
 var game_can_process: bool = false
 
 var soap_value: int = 0
-const MAX_SOAP_VALUE: int = 5
+const MAX_SOAP_VALUE: int = 4
 
 # Loading private variables
 var _load_time: float = 0.0
@@ -37,9 +37,6 @@ func _ready() -> void:
 
 func set_soap_value(value: int) -> void:
 	soap_value += value
-	
-	if soap_value == MAX_SOAP_VALUE:
-		SystemEvents.game_run_finished.emit()
 
 
 func _game_start_new_run() -> void:

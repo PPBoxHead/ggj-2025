@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=16 format=3 uid="uid://dp76ethtax6kg"]
 
 [ext_resource type="Environment" uid="uid://dwg78d02iv6ch" path="res://resources/def_environment.tres" id="1_gkbi2"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://b4uu8rnk4f6t" path="res://characters/npcs/brain.tscn" id="10_f4mmb"]
 [ext_resource type="PackedScene" uid="uid://xgahkiean2n1" path="res://characters/npcs/walter.tscn" id="12_kggmy"]
 [ext_resource type="PackedScene" uid="uid://bldptjas2u3w3" path="res://characters/npcs/blue_baby.tscn" id="13_a3qfu"]
+[ext_resource type="Texture2D" uid="uid://dbhkgrufwcsiw" path="res://screens/WeponOfBubbleDistruccion.png" id="14_s6lyi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kfg6g"]
+radius = 0.775644
 
 [node name="TestScene" type="Node3D"]
 
@@ -60,4 +64,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8)
 [node name="Walter" parent="NPCs" instance=ExtResource("12_kggmy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0, -11.4)
 
-[node name="ThisNodeIsTheEnd" type="Node3D" parent="."]
+[node name="ThisNodeIsTheEnd" type="Node3D" parent="." groups=["final_weapon"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94468, 0.403408, -34.4238)
+
+[node name="Area3D" type="Area3D" parent="ThisNodeIsTheEnd"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThisNodeIsTheEnd/Area3D"]
+shape = SubResource("SphereShape3D_kfg6g")
+
+[node name="Sprite3D" type="Sprite3D" parent="ThisNodeIsTheEnd"]
+pixel_size = 0.005
+billboard = 2
+texture_filter = 2
+texture = ExtResource("14_s6lyi")

@@ -47,12 +47,6 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect-2" parent="MenuScreen" index="6"]
-layout_mode = 0
-
-[node name="TextureRect-3" parent="MenuScreen" index="7"]
-layout_mode = 0
-
 [node name="5-PostProcessLayer" type="CanvasLayer" parent="."]
 layer = 5
 
