@@ -1,15 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=22 format=3 uid="uid://dp76ethtax6kg"]
 
 [ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://characters/enemies/Masked.png" id="1_e0dnk"]
 [ext_resource type="Environment" uid="uid://dwg78d02iv6ch" path="res://resources/def_environment.tres" id="1_gkbi2"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
 [ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="4_mln1q"]
 [ext_resource type="PackedScene" uid="uid://d4ecc65m577o" path="res://testing/school.tscn" id="5_6l23h"]
+[ext_resource type="AudioStream" uid="uid://0b8x3s4f0qgp" path="res://resources/audio/Track1_Declick.wav" id="7_0gdoo"]
 [ext_resource type="PackedScene" uid="uid://c4uq03n77pq1e" path="res://characters/enemies/masked.tscn" id="7_h2h7l"]
 [ext_resource type="PackedScene" uid="uid://cpdjcxawgava6" path="res://characters/enemies/twoside.tscn" id="7_i4uh7"]
 [ext_resource type="PackedScene" uid="uid://dbhsucw0xegng" path="res://characters/enemies/unmasked.tscn" id="8_yudw1"]
 [ext_resource type="PackedScene" uid="uid://bw2o1wxjppp0p" path="res://characters/enemies/who.tscn" id="9_me3o4"]
-[ext_resource type="AudioStream" uid="uid://0b8x3s4f0qgp" path="res://resources/audio/Track1_Declick.wav" id="7_0gdoo"]
 
 [sub_resource type="Gradient" id="Gradient_ks3h4"]
 colors = PackedColorArray(0.447059, 0.447059, 0.447059, 0.470588, 1, 1, 1, 1)
