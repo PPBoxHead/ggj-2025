@@ -60,6 +60,7 @@ func _handle_rotation() -> void:
 	if Input.is_action_pressed("left"):
 		tween = create_tween().set_trans(tween_trans).set_ease(tween_ease)
 		tween.tween_property(self, "transform:basis", transform.basis.rotated(Vector3.UP, PI / 2), transition_time)
+	_get_closest_enemy()
 
 
 func _move_direction(local_direction: Vector3) -> void:
@@ -74,8 +75,24 @@ func _move_direction(local_direction: Vector3) -> void:
 	var rand_num = rng.randi_range(0, steps_sfx.size() - 1)
 	audio_player.stream = steps_sfx[rand_num]
 	audio_player.play()
+	_get_closest_enemy()
 		
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	SystemEvents.start_combat.emit(area.get_parent())
+
+func _get_closest_enemy() -> void:
+	var closest_distance: float = INF
+	var closest_node: Node3D = null
+	
+	var enemies_list = get_parent().get_node("Enemies")
+	
+	for enemy: Node3D in enemies_list.get_children():
+		var dist: float = self.global_position.distance_to(enemy.global_position)
+		if dist <= closest_distance:
+			closest_distance = dist
+			closest_node = enemy
+			
+	SystemEvents.update_compass.emit(self, closest_node.global_position)
+	

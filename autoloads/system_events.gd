@@ -28,3 +28,5 @@ signal bubble_soap_collected(soap_value: int)
 
 signal start_combat(enemy: Node3D)
 signal finish_combat
+
+signal update_compass(player: Node3D, dest_pos: Vector3)
