@@ -1,7 +1,6 @@
 extends Control
 
 @onready var enemyHand = $EnemyOptions/EnemyHandTexture
-#@onready var labelCombatResult = $"VSplitContainer/VBoxContainer-2/Result"
 @onready var qtButton = $VSplitContainer/QTButton
 @onready var qtTimer = $QTTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -11,7 +10,7 @@ extends Control
 @export var enemyScissorsHand: Texture2D
 
 enum Choices {PAPER = 0, ROCK = 1, SCISSORS = 2}
-enum MiniGameStates {PLAYER_LOSS = 0, DRAW = 1, SECOND_CHANCE = 2, PLAYER_WIN = 3}
+enum MiniGameStates {PLAYER_LOSS = 0, DRAW = 1, SECOND_CHANCE = 2, PLAYER_WIN = 3, NOT_CHOOSED = 4}
 var enemyChoice: Choices
 var actualState: MiniGameStates
 var actualEnemy: Node3D
@@ -23,34 +22,24 @@ func _ready() -> void:
 
 func start_combat(enemy: Node3D) -> void:
 	actualEnemy = enemy
-	self.visible = true
-	animation_player.play("start_combat")
-	
-	await animation_player.animation_finished
+	reset_combat()
 
 
 func enemy_choice() -> void:
 	match SystemGlobals.rng.randi_range(0, 2):
-		0: 
-			enemyChoice = Choices.PAPER
-		1: 
-			enemyChoice = Choices.ROCK
-		2: 
-			enemyChoice = Choices.SCISSORS
-		_: 
-			print("WTF is going on")
+		0: enemyChoice = Choices.PAPER
+		1: enemyChoice = Choices.ROCK
+		2: enemyChoice = Choices.SCISSORS
+		_: print("WTF is going on")
 	
 	match enemyChoice:
 		Choices.PAPER: 
-			#labelEnemyResult.text = "Paper"
 			enemyHand.texture = enemyPaperHand
 			animation_player.play("show_enemy_hand")
 		Choices.ROCK: 
-			#labelEnemyResult.text = "Rock"
 			enemyHand.texture = enemyRockHand
 			animation_player.play("show_enemy_hand")
 		Choices.SCISSORS: 
-			#labelEnemyResult.text = "Scissors"
 			enemyHand.texture = enemyScissorsHand
 			animation_player.play("show_enemy_hand")
 	
@@ -58,6 +47,10 @@ func enemy_choice() -> void:
 
 
 func _on_button_pressed(button_name: String) -> void:
+	if actualState == MiniGameStates.PLAYER_WIN:
+		print("This is a debug")
+		return
+	
 	var playerChoice: Choices
 	match button_name:
 		"paper":
@@ -90,10 +83,7 @@ func _on_button_pressed(button_name: String) -> void:
 			actualEnemy.die()
 			SystemEvents.finish_combat.emit()
 		MiniGameStates.DRAW: 
-			match enemyChoice:
-				Choices.PAPER: pass
-				Choices.ROCK: pass
-				Choices.SCISSORS: pass
+			reset_combat()
 		MiniGameStates.SECOND_CHANCE:
 			qtButton.visible = true
 			qtTimer.start()
@@ -109,10 +99,22 @@ func finish_combat() -> void:
 func reset_combat() -> void:
 	qtTimer.stop()
 	qtButton.visible = false
+	animation_player.play_backwards("show_enemy_hand")
 	animation_player.play("RESET")
+	await get_tree().create_timer(1.0).timeout
+	
+	actualState = MiniGameStates.NOT_CHOOSED
+	self.visible = true
+	animation_player.play("start_combat")
+	
+	await animation_player.animation_finished
 
 
 func _on_qt_button_pressed() -> void:
+	if actualState == MiniGameStates.PLAYER_WIN:
+		print("Fast, so fast")
+		return
+		
 	actualState = MiniGameStates.PLAYER_WIN
 	actualEnemy.die()
 	qtTimer.stop()
@@ -122,7 +124,8 @@ func _on_qt_button_pressed() -> void:
 func _on_qt_timer_timeout() -> void:
 	if actualState != MiniGameStates.PLAYER_WIN:
 		actualState = MiniGameStates.PLAYER_LOSS
-		#labelCombatResult.text = "Enemy Win"
+		reset_combat()
+		return
 		
 	qtButton.visible = false
 	SystemEvents.finish_combat.emit()
