@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=6 format=3 uid="uid://wu3x0h2p5vur"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_w66xu"]
+[ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="5_h1m2v"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="10_2n2eu"]
+
+[sub_resource type="Resource" id="Resource_kyalp"]
+script = ExtResource("1_w66xu")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_vsiel"]
+script = ExtResource("1_w66xu")
+scene = ExtResource("5_h1m2v")
+overrides = {
+"box_animation_in": "1",
+"box_animation_new_text": "1",
+"box_size": "Vector2(300, 120)",
+"next_indicator_animation": "1",
+"normal_font": "\"res://resources/fonts/CrayonLibre.ttf\"",
+"text_alignment": "1",
+"text_size": "24.0",
+"text_use_global_font": "false",
+"text_use_global_size": "false"
+}
+
+[resource]
+script = ExtResource("10_2n2eu")
+name = "style"
+layer_list = Array[String](["13"])
+layer_info = {
+"": SubResource("Resource_kyalp"),
+"13": SubResource("Resource_vsiel")
+}
+base_overrides = {}
+layers = Array[ExtResource("1_w66xu")]([])
+metadata/_latest_layer = "13"

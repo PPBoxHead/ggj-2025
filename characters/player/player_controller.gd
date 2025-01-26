@@ -8,6 +8,8 @@ extends Node3D
 
 var tween
 var lock_input: bool = false
+var can_interact: bool = false
+var interactable_npc: Node3D = null
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -31,8 +33,11 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		SystemEvents.bubble_soap_collected.emit(1)
+	if can_interact and Input.is_action_just_pressed("interact") and interactable_npc != null:
+		if Dialogic.current_timeline != null:
+			return
+		var npc_timeline = interactable_npc.name.to_lower() + "_timeline" as Variant
+		Dialogic.start(npc_timeline)
 	
 	if tween is Tween:
 		if tween.is_running():
@@ -81,7 +86,11 @@ func _move_direction(local_direction: Vector3) -> void:
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	SystemEvents.start_combat.emit(area.get_parent())
+	if area.get_parent().is_in_group("target"):
+		SystemEvents.start_combat.emit(area.get_parent())
+	if area.get_parent().is_in_group("npc"):
+		can_interact = true
+		interactable_npc = area.get_parent()
 
 
 func _get_closest_enemy() -> void:
@@ -97,4 +106,9 @@ func _get_closest_enemy() -> void:
 			closest_node = enemy
 			
 	SystemEvents.update_compass.emit(self, closest_node.global_position)
-	
+
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	if area.get_parent().is_in_group("npc"):
+		can_interact = false
+		interactable_npc = null
