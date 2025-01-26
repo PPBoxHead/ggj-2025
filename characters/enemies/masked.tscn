@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://c4uq03n77pq1e"]
+
+[ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://characters/enemies/Masked.png" id="1_enjhd"]
+[ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="2_m8iwu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4p72"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Gradient" id="Gradient_hystp"]
+colors = PackedColorArray(0.447059, 0.447059, 0.447059, 0.470588, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_icdh3"]
+gradient = SubResource("Gradient_hystp")
+
+[sub_resource type="Curve" id="Curve_1jddf"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3uttj"]
+curve = SubResource("Curve_1jddf")
+
+[sub_resource type="Curve" id="Curve_uvmmy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0rvnv"]
+curve = SubResource("Curve_uvmmy")
+
+[sub_resource type="Curve" id="Curve_p1o1n"]
+min_value = -329.14
+max_value = 330.14
+_data = [Vector2(0, -227.138), 0.0, -0.193871, 0, 0, Vector2(0.99505, 210.723), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gm4k8"]
+curve = SubResource("Curve_p1o1n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yqtir"]
+resource_local_to_scene = true
+emission_shape_scale = Vector3(0.9, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 0.9
+gravity = Vector3(0, 0.4, 0)
+tangential_accel_min = -1.0
+tangential_accel_max = 0.999998
+damping_max = 0.3
+damping_curve = SubResource("CurveTexture_3uttj")
+scale_curve = SubResource("CurveTexture_gm4k8")
+color_ramp = SubResource("GradientTexture1D_icdh3")
+hue_variation_min = -0.3
+hue_variation_max = 0.19
+hue_variation_curve = SubResource("CurveTexture_0rvnv")
+anim_speed_max = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqe0v"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_m8iwu")
+texture_filter = 2
+billboard_mode = 3
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4exfe"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_kqe0v")
+size = Vector2(0.1, 0.1)
+
+[node name="Masked" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+sorting_offset = 1.0
+billboard = 2
+texture_filter = 2
+texture = ExtResource("1_enjhd")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_j4p72")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 0, 0.6, 0)
+amount = 120
+explosiveness = 0.45
+randomness = 0.76
+process_material = SubResource("ParticleProcessMaterial_yqtir")
+draw_pass_1 = SubResource("QuadMesh_4exfe")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+light_negative = true
+omni_range = 1.25
+omni_attenuation = -2.0

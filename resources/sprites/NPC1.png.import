@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q11gqa23k26"
-path.s3tc="res://.godot/imported/Masked.png-f39a4d22a0362bdec23dbf0b2c7cbd30.s3tc.ctex"
+uid="uid://t5b3q37ltn4a"
+path.s3tc="res://.godot/imported/NPC1.png-dce5c29506ac342ee4d139317d393d68.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/sprites/Masked.png"
-dest_files=["res://.godot/imported/Masked.png-f39a4d22a0362bdec23dbf0b2c7cbd30.s3tc.ctex"]
+source_file="res://resources/sprites/NPC1.png"
+dest_files=["res://.godot/imported/NPC1.png-dce5c29506ac342ee4d139317d393d68.s3tc.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

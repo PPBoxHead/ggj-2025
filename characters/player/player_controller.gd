@@ -10,15 +10,23 @@ var tween
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var head_marker: Marker3D = $HeadMarker
+
 @onready var front_ray_cast: RayCast3D = $RaysMarker/FrontRayCast
 @onready var back_ray_cast: RayCast3D = $RaysMarker/BackRayCast
 @onready var left_ray_cast: RayCast3D = $RaysMarker/LeftRayCast
 @onready var right_ray_cast: RayCast3D = $RaysMarker/RightRayCast
 
+@export var steps_sfx: Array[AudioStream]
+
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
+var rng: RandomNumberGenerator
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
 
 
 func _physics_process(_delta: float) -> void:
@@ -29,8 +37,9 @@ func _physics_process(_delta: float) -> void:
 		if tween.is_running():
 			return
 	
-	_handle_direction()
-	_handle_rotation()
+	if !head_marker.lock_view:
+		_handle_direction()
+		_handle_rotation()
 
 
 func _handle_direction() -> void:
@@ -61,4 +70,8 @@ func _move_direction(local_direction: Vector3) -> void:
 	tween.tween_property(self, "transform", transform.translated(global_direction * 1), transition_time)
 	if cam_headbob:
 		animation_player.play("headbob")
+		
+	var rand_num = rng.randi_range(0, steps_sfx.size() - 1)
+	audio_player.stream = steps_sfx[rand_num]
+	audio_player.play()
 		
