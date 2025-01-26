@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bldptjas2u3w3"]
+
+[ext_resource type="PackedScene" uid="uid://ba3mbj6n72os3" path="res://characters/npcs/gasp.tscn" id="1_w033j"]
+[ext_resource type="Texture2D" uid="uid://t5b3q37ltn4a" path="res://characters/npcs/NPC1.png" id="2_y7qb6"]
+
+[node name="BlueBaby" instance=ExtResource("1_w033j")]
+
+[node name="Sprite3D" parent="." index="0"]
+texture = ExtResource("2_y7qb6")

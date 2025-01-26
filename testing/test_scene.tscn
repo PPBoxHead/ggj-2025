@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=14 format=3 uid="uid://dp76ethtax6kg"]
 
 [ext_resource type="Environment" uid="uid://dwg78d02iv6ch" path="res://resources/def_environment.tres" id="1_gkbi2"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cy11r0ax0oc6c" path="res://screens/combat_ui.tscn" id="7_iyke2"]
 [ext_resource type="PackedScene" uid="uid://dbhsucw0xegng" path="res://characters/enemies/unmasked.tscn" id="8_yudw1"]
 [ext_resource type="PackedScene" uid="uid://bw2o1wxjppp0p" path="res://characters/enemies/who.tscn" id="9_me3o4"]
+[ext_resource type="PackedScene" uid="uid://ba3mbj6n72os3" path="res://characters/npcs/gasp.tscn" id="10_d4oe6"]
+[ext_resource type="PackedScene" uid="uid://b4uu8rnk4f6t" path="res://characters/npcs/brain.tscn" id="10_f4mmb"]
+[ext_resource type="PackedScene" uid="uid://xgahkiean2n1" path="res://characters/npcs/walter.tscn" id="12_kggmy"]
+[ext_resource type="PackedScene" uid="uid://bldptjas2u3w3" path="res://characters/npcs/blue_baby.tscn" id="13_a3qfu"]
 
 [node name="TestScene" type="Node3D"]
 
@@ -23,19 +27,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 [node name="CombatUi" parent="." instance=ExtResource("7_iyke2")]
 visible = false
 
-[node name="Masked" parent="." instance=ExtResource("7_h2h7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9)
-
-[node name="Twoside" parent="." instance=ExtResource("7_i4uh7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
-
-[node name="Unmasked" parent="." instance=ExtResource("8_yudw1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -9)
-
-[node name="Who" parent="." instance=ExtResource("9_me3o4")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, -9)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_0gdoo")
 volume_db = -8.0
 autoplay = true
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Masked" parent="Enemies" instance=ExtResource("7_h2h7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9)
+
+[node name="Twoside" parent="Enemies" instance=ExtResource("7_i4uh7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
+
+[node name="Unmasked" parent="Enemies" instance=ExtResource("8_yudw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -9)
+
+[node name="Who" parent="Enemies" instance=ExtResource("9_me3o4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, -9)
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="BlueBaby" parent="NPCs" instance=ExtResource("13_a3qfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -15.6)
+
+[node name="Brain" parent="NPCs" instance=ExtResource("10_f4mmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 0, -11.5)
+
+[node name="Gasp" parent="NPCs" instance=ExtResource("10_d4oe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8)
+
+[node name="Walter" parent="NPCs" instance=ExtResource("12_kggmy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -24.5)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba3mbj6n72os3"]
+
+[ext_resource type="Texture2D" uid="uid://bxta0drbo8k4u" path="res://characters/npcs/Gasp.png" id="1_f3i6x"]
+
+[node name="Gasp" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 2
+texture_filter = 2
+texture = ExtResource("1_f3i6x")

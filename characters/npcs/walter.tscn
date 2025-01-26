@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://xgahkiean2n1"]
+
+[ext_resource type="PackedScene" uid="uid://ba3mbj6n72os3" path="res://characters/npcs/gasp.tscn" id="1_mgjwn"]
+[ext_resource type="Texture2D" uid="uid://c58iek8y72h18" path="res://characters/npcs/NPC2.png" id="2_tucuj"]
+
+[node name="Walter" instance=ExtResource("1_mgjwn")]
+
+[node name="Sprite3D" parent="." index="0"]
+texture = ExtResource("2_tucuj")

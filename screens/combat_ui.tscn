@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cy11r0ax0oc6c"]
+[gd_scene load_steps=15 format=3 uid="uid://cy11r0ax0oc6c"]
 
 [ext_resource type="Script" path="res://combat_system.gd" id="1_5hxsh"]
-[ext_resource type="PackedScene" uid="uid://cuu3l670vfemu" path="res://screens/hud.tscn" id="8_cqbl3"]
 [ext_resource type="Texture2D" uid="uid://dyojdvjabx6g0" path="res://screens/RPSPlayer1.png" id="8_xrk08"]
 [ext_resource type="Texture2D" uid="uid://ba3hfk347sjku" path="res://screens/RPSPlayer3.png" id="9_2maip"]
 [ext_resource type="Texture2D" uid="uid://by3kvuxjq7c4y" path="res://screens/RPSPlayer2.png" id="10_p6bmk"]
@@ -468,9 +467,6 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_kdpvc")
 }
-
-[node name="HUD" parent="." instance=ExtResource("8_cqbl3")]
-layout_mode = 1
 
 [connection signal="pressed" from="PlayerOptions/PaperButton" to="." method="_on_button_pressed" binds= ["paper"]]
 [connection signal="pressed" from="PlayerOptions/RockButton" to="." method="_on_button_pressed" binds= ["rock"]]

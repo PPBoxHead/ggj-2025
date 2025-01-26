@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxta0drbo8k4u"
-path.s3tc="res://.godot/imported/Gasp.png-07cf870b2994d3c7fb216e819fc44c45.s3tc.ctex"
+uid="uid://c58iek8y72h18"
+path.s3tc="res://.godot/imported/NPC2.png-c684df43b106449c526e9d38c9e9ec9b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/sprites/Gasp.png"
-dest_files=["res://.godot/imported/Gasp.png-07cf870b2994d3c7fb216e819fc44c45.s3tc.ctex"]
+source_file="res://characters/npcs/NPC2.png"
+dest_files=["res://.godot/imported/NPC2.png-c684df43b106449c526e9d38c9e9ec9b.s3tc.ctex"]
 
 [params]
 
