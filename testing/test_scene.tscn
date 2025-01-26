@@ -1,105 +1,27 @@
-[gd_scene load_steps=22 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=10 format=3 uid="uid://dp76ethtax6kg"]
 
-[ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://characters/enemies/Masked.png" id="1_e0dnk"]
 [ext_resource type="Environment" uid="uid://dwg78d02iv6ch" path="res://resources/def_environment.tres" id="1_gkbi2"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
-[ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="4_mln1q"]
 [ext_resource type="PackedScene" uid="uid://d4ecc65m577o" path="res://testing/school.tscn" id="5_6l23h"]
-[ext_resource type="PackedScene" uid="uid://cy11r0ax0oc6c" path="res://screens/combat_ui.tscn" id="7_iyke2"]
 [ext_resource type="AudioStream" uid="uid://0b8x3s4f0qgp" path="res://resources/audio/Track1_Declick.wav" id="7_0gdoo"]
 [ext_resource type="PackedScene" uid="uid://c4uq03n77pq1e" path="res://characters/enemies/masked.tscn" id="7_h2h7l"]
 [ext_resource type="PackedScene" uid="uid://cpdjcxawgava6" path="res://characters/enemies/twoside.tscn" id="7_i4uh7"]
+[ext_resource type="PackedScene" uid="uid://cy11r0ax0oc6c" path="res://screens/combat_ui.tscn" id="7_iyke2"]
 [ext_resource type="PackedScene" uid="uid://dbhsucw0xegng" path="res://characters/enemies/unmasked.tscn" id="8_yudw1"]
 [ext_resource type="PackedScene" uid="uid://bw2o1wxjppp0p" path="res://characters/enemies/who.tscn" id="9_me3o4"]
-
-[sub_resource type="Gradient" id="Gradient_ks3h4"]
-colors = PackedColorArray(0.447059, 0.447059, 0.447059, 0.470588, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_knr2t"]
-gradient = SubResource("Gradient_ks3h4")
-
-[sub_resource type="Curve" id="Curve_xipff"]
-max_value = 100.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_71k3f"]
-curve = SubResource("Curve_xipff")
-
-[sub_resource type="Curve" id="Curve_78cqd"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_2bvae"]
-curve = SubResource("Curve_78cqd")
-
-[sub_resource type="Curve" id="Curve_ef52g"]
-min_value = -329.14
-max_value = 330.14
-_data = [Vector2(0, -227.138), 0.0, -0.193871, 0, 0, Vector2(0.99505, 210.723), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_xh2pa"]
-curve = SubResource("Curve_ef52g")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wwapk"]
-emission_shape_scale = Vector3(0.9, 0.5, 0.5)
-emission_shape = 1
-emission_sphere_radius = 0.9
-gravity = Vector3(0, 0.4, 0)
-tangential_accel_min = -1.0
-tangential_accel_max = 0.999998
-damping_max = 0.3
-damping_curve = SubResource("CurveTexture_71k3f")
-scale_curve = SubResource("CurveTexture_xh2pa")
-color_ramp = SubResource("GradientTexture1D_knr2t")
-hue_variation_min = -0.3
-hue_variation_max = 0.19
-hue_variation_curve = SubResource("CurveTexture_2bvae")
-anim_speed_max = 4.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o2g6"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("4_mln1q")
-texture_filter = 2
-billboard_mode = 3
-particles_anim_h_frames = 8
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_d734v"]
-material = SubResource("StandardMaterial3D_3o2g6")
-size = Vector2(0.1, 0.1)
 
 [node name="TestScene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_gkbi2")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -3)
-sorting_offset = 1.0
-billboard = 2
-texture_filter = 2
-texture = ExtResource("1_e0dnk")
-
 [node name="Player" parent="." instance=ExtResource("3_bjgjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, -0.0189878, 0.7, -2.98263)
-visible = false
-amount = 120
-explosiveness = 0.45
-randomness = 0.76
-process_material = SubResource("ParticleProcessMaterial_wwapk")
-draw_pass_1 = SubResource("QuadMesh_d734v")
 
 [node name="school" parent="." instance=ExtResource("5_6l23h")]
 
 [node name="CombatUi" parent="." instance=ExtResource("7_iyke2")]
+visible = false
 
 [node name="Masked" parent="." instance=ExtResource("7_h2h7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)

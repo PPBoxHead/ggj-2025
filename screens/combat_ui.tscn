@@ -82,6 +82,7 @@ text = "Press Here Very Fast"
 
 [node name="QTTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [connection signal="pressed" from="VSplitContainer/VBoxContainer/HBoxContainer/Paper" to="." method="_on_button_pressed" binds= ["paper"]]
 [connection signal="pressed" from="VSplitContainer/VBoxContainer/HBoxContainer/Rock" to="." method="_on_button_pressed" binds= ["rock"]]

@@ -17,9 +17,17 @@ enum Choices {PAPER = 0, ROCK = 1, SCISSORS = 2}
 enum MiniGameStates {PLAYER_LOSS = 0, DRAW = 1, SECOND_CHANCE = 2, PLAYER_WIN = 3}
 var enemyChoice: Choices
 var actualState: MiniGameStates
+var actualEnemy: Node3D
 
 func _ready() -> void:
-	SystemGlobals.game_can_process = false
+	SystemEvents.start_combat.connect(start_combat)
+	SystemEvents.finish_combat.connect(finish_combat)
+
+func start_combat(enemy: Node3D) -> void:
+	actualEnemy = enemy
+	self.visible = true
+
+	reset_combat()
 	
 	match SystemGlobals.rng.randi_range(0, 2):
 		0: enemyChoice = Choices.PAPER
@@ -36,8 +44,7 @@ func _ready() -> void:
 			enemyHand.texture = enemyRockHand
 		Choices.SCISSORS: 
 			labelEnemyResult.text = "Scissors"
-			enemyHand.texture = enemyScissorsHand
-	
+			enemyHand.texture = enemyScissorsHand	
 
 func _on_button_pressed(button_name: String) -> void:
 	var playerChoice: Choices
@@ -57,7 +64,9 @@ func _on_button_pressed(button_name: String) -> void:
 		actualState = MiniGameStates.SECOND_CHANCE
 		
 	match actualState:
-		MiniGameStates.PLAYER_WIN: labelCombatResult.text = "Player Win"
+		MiniGameStates.PLAYER_WIN: 
+			actualEnemy.scale = Vector3(0.5, 0.5, 0.5)
+			SystemEvents.finish_combat.emit()
 		MiniGameStates.DRAW: 
 			match enemyChoice:
 				Choices.PAPER: paperButton.visible = false
@@ -67,11 +76,23 @@ func _on_button_pressed(button_name: String) -> void:
 			qtButton.visible = true
 			qtTimer.start()
 
+func finish_combat() -> void:
+	print("This is finished, like, finished")
+	self.visible = false
+	qtTimer.stop()
 
+func reset_combat() -> void:
+	qtTimer.stop()
+	qtButton.visible = false
+	paperButton.visible = true
+	rockButton.visible = true
+	scissorsButton.visible = true
+	
 func _on_qt_button_pressed() -> void:
 	actualState = MiniGameStates.PLAYER_WIN
-	labelCombatResult.text = "Player Win"
-
+	actualEnemy.scale = Vector3(0.5, 0.5, 0.5)
+	qtTimer.stop()
+	SystemEvents.finish_combat.emit()
 
 func _on_qt_timer_timeout() -> void:
 	if actualState != MiniGameStates.PLAYER_WIN:
@@ -79,3 +100,4 @@ func _on_qt_timer_timeout() -> void:
 		labelCombatResult.text = "Enemy Win"
 		
 	qtButton.visible = false
+	SystemEvents.finish_combat.emit()

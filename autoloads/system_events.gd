@@ -25,3 +25,6 @@ signal character_comment_requested()
 signal player_interaction_requested(interaction_type: String)
 
 signal bubble_soap_collected(soap_value: int)
+
+signal start_combat(enemy: Node3D)
+signal finish_combat
