@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy11r0ax0oc6c"]
+[gd_scene load_steps=8 format=3 uid="uid://cy11r0ax0oc6c"]
 
 [ext_resource type="Script" path="res://combat_system.gd" id="1_5hxsh"]
+[ext_resource type="Texture2D" uid="uid://cqnn3ayd1ig60" path="res://resources/sprites/hands/HandPaperHuman.png" id="2_26pfx"]
+[ext_resource type="Texture2D" uid="uid://cycarkn5etaa0" path="res://resources/sprites/hands/HandPaperFoe.png" id="2_gd2uv"]
+[ext_resource type="Texture2D" uid="uid://bflnxyb5yuu10" path="res://resources/sprites/hands/HandRockHuman.png" id="3_b2w08"]
+[ext_resource type="Texture2D" uid="uid://ba806ov3sguo4" path="res://resources/sprites/hands/HandRockFoe.png" id="3_oqaoi"]
+[ext_resource type="Texture2D" uid="uid://b7so6emulk36t" path="res://resources/sprites/hands/HandScissorsHuman.png" id="4_cfea5"]
+[ext_resource type="Texture2D" uid="uid://chmsdrwr6xxvs" path="res://resources/sprites/hands/HandScissorsFoe.png" id="4_pu08t"]
 
 [node name="CombatUi" type="VBoxContainer"]
 anchors_preset = 15
@@ -9,6 +15,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5hxsh")
+enemyPaperHand = ExtResource("2_gd2uv")
+enemyRockHand = ExtResource("3_oqaoi")
+enemyScissorsHand = ExtResource("4_pu08t")
 
 [node name="VSplitContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -25,6 +34,11 @@ layout_mode = 2
 text = "
 "
 
+[node name="EnemyHand" type="TextureRect" parent="VSplitContainer/CenterContainer"]
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 3
+
 [node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer"]
 layout_mode = 2
 
@@ -38,15 +52,18 @@ layout_mode = 2
 [node name="Paper" type="Button" parent="VSplitContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Paper"
+icon = ExtResource("2_26pfx")
 
 [node name="Rock" type="Button" parent="VSplitContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Rock
 "
+icon = ExtResource("3_b2w08")
 
 [node name="Scissors" type="Button" parent="VSplitContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Scissors"
+icon = ExtResource("4_cfea5")
 
 [node name="VBoxContainer-2" type="VBoxContainer" parent="VSplitContainer"]
 layout_mode = 2

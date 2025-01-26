@@ -1,5 +1,6 @@
 extends Control
 
+@onready var enemyHand = $VSplitContainer/CenterContainer/EnemyHand
 @onready var labelEnemyResult = $VSplitContainer/CenterContainer/EnemyResult
 @onready var labelCombatResult = $"VSplitContainer/VBoxContainer-2/Result"
 @onready var paperButton = $VSplitContainer/VBoxContainer/HBoxContainer/Paper
@@ -7,6 +8,10 @@ extends Control
 @onready var scissorsButton = $VSplitContainer/VBoxContainer/HBoxContainer/Scissors
 @onready var qtButton = $VSplitContainer/QTButton
 @onready var qtTimer = $QTTimer
+
+@export var enemyPaperHand: Texture2D
+@export var enemyRockHand: Texture2D
+@export var enemyScissorsHand: Texture2D
 
 enum Choices {PAPER = 0, ROCK = 1, SCISSORS = 2}
 enum MiniGameStates {PLAYER_LOSS = 0, DRAW = 1, SECOND_CHANCE = 2, PLAYER_WIN = 3}
@@ -23,9 +28,15 @@ func _ready() -> void:
 		_: print("WTF is going on")
 		
 	match enemyChoice:
-		Choices.PAPER: labelEnemyResult.text = "Paper"
-		Choices.ROCK: labelEnemyResult.text = "Rock"
-		Choices.SCISSORS: labelEnemyResult.text = "Scissors"
+		Choices.PAPER: 
+			labelEnemyResult.text = "Paper"
+			enemyHand.texture = enemyPaperHand
+		Choices.ROCK: 
+			labelEnemyResult.text = "Rock"
+			enemyHand.texture = enemyRockHand
+		Choices.SCISSORS: 
+			labelEnemyResult.text = "Scissors"
+			enemyHand.texture = enemyScissorsHand
 	
 
 func _on_button_pressed(button_name: String) -> void:
