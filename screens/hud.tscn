@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuu3l670vfemu"]
+[gd_scene load_steps=9 format=3 uid="uid://cuu3l670vfemu"]
 
 [ext_resource type="Texture2D" uid="uid://dd1kqqodexq7r" path="res://screens/Sprite-0004.png" id="1_bmhji"]
 [ext_resource type="Texture2D" uid="uid://ktb636f3gj2r" path="res://screens/GGJ-2025-HUD.png" id="1_swvo6"]
 [ext_resource type="Texture2D" uid="uid://bbu5uxmgpkirx" path="res://screens/Sprite-0004_mask.png" id="2_f8lgg"]
 [ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="2_sq7sj"]
 [ext_resource type="Material" uid="uid://mxx27dtkavte" path="res://resources/shaders/soap_bar.material" id="2_tux3g"]
+[ext_resource type="Texture2D" uid="uid://ud34aofasrtx" path="res://screens/Player.png" id="6_rr8d4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cwoui"]
 particles_animation = true
@@ -128,3 +129,12 @@ offset_right = 600.0
 offset_bottom = 400.0
 mouse_filter = 2
 texture = ExtResource("1_swvo6")
+
+[node name="PortraitRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 281.0
+offset_right = 98.0
+offset_bottom = 366.0
+texture = ExtResource("6_rr8d4")
+stretch_mode = 2
