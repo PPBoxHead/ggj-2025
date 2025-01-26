@@ -7,6 +7,7 @@ extends Node3D
 @export var cam_headbob: bool = true
 
 var tween
+var lock_input: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -37,7 +38,7 @@ func _physics_process(_delta: float) -> void:
 		if tween.is_running():
 			return
 	
-	if !head_marker.lock_view:
+	if !head_marker.lock_view or !lock_input:
 		_handle_direction()
 		_handle_rotation()
 
@@ -81,6 +82,7 @@ func _move_direction(local_direction: Vector3) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	SystemEvents.start_combat.emit(area.get_parent())
+
 
 func _get_closest_enemy() -> void:
 	var closest_distance: float = INF

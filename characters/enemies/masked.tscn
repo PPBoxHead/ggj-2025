@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4uq03n77pq1e"]
+[gd_scene load_steps=19 format=3 uid="uid://c4uq03n77pq1e"]
 
+[ext_resource type="Script" path="res://characters/enemies/enemy_controller.gd" id="1_aueaq"]
 [ext_resource type="Texture2D" uid="uid://q11gqa23k26" path="res://characters/enemies/Masked.png" id="1_enjhd"]
 [ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="2_m8iwu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j4p72"]
-size = Vector3(2, 1, 2)
+size = Vector3(3, 1, 3)
 
 [sub_resource type="Gradient" id="Gradient_hystp"]
 colors = PackedColorArray(0.447059, 0.447059, 0.447059, 0.470588, 1, 1, 1, 1)
@@ -41,6 +42,8 @@ resource_local_to_scene = true
 emission_shape_scale = Vector3(0.9, 0.5, 0.5)
 emission_shape = 1
 emission_sphere_radius = 0.9
+spread = 180.0
+initial_velocity_max = 5.0
 gravity = Vector3(0, 0.4, 0)
 tangential_accel_min = -1.0
 tangential_accel_max = 0.999998
@@ -70,7 +73,94 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_kqe0v")
 size = Vector2(0.1, 0.1)
 
+[sub_resource type="Animation" id="Animation_y0xef"]
+resource_name = "die"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-0.5, 1),
+"update": 0,
+"values": [1.25, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xhgcj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1h1v"]
+_data = {
+"RESET": SubResource("Animation_xhgcj"),
+"die": SubResource("Animation_y0xef")
+}
+
 [node name="Masked" type="Node3D"]
+script = ExtResource("1_aueaq")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -90,8 +180,10 @@ shape = SubResource("BoxShape3D_j4p72")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 0, 0.6, 0)
-amount = 120
-explosiveness = 0.45
+emitting = false
+amount = 500
+one_shot = true
+explosiveness = 0.75
 randomness = 0.76
 process_material = SubResource("ParticleProcessMaterial_yqtir")
 draw_pass_1 = SubResource("QuadMesh_4exfe")
@@ -101,3 +193,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 light_negative = true
 omni_range = 1.25
 omni_attenuation = -2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l1h1v")
+}

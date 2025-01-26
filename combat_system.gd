@@ -87,7 +87,7 @@ func _on_button_pressed(button_name: String) -> void:
 		
 	match actualState:
 		MiniGameStates.PLAYER_WIN: 
-			actualEnemy.scale = Vector3(0.5, 0.5, 0.5)
+			actualEnemy.die()
 			SystemEvents.finish_combat.emit()
 		MiniGameStates.DRAW: 
 			match enemyChoice:
@@ -114,7 +114,7 @@ func reset_combat() -> void:
 
 func _on_qt_button_pressed() -> void:
 	actualState = MiniGameStates.PLAYER_WIN
-	actualEnemy.scale = Vector3(0.5, 0.5, 0.5)
+	actualEnemy.die()
 	qtTimer.stop()
 	SystemEvents.finish_combat.emit()
 
