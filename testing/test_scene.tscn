@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cpdjcxawgava6" path="res://characters/enemies/twoside.tscn" id="7_i4uh7"]
 [ext_resource type="PackedScene" uid="uid://dbhsucw0xegng" path="res://characters/enemies/unmasked.tscn" id="8_yudw1"]
 [ext_resource type="PackedScene" uid="uid://bw2o1wxjppp0p" path="res://characters/enemies/who.tscn" id="9_me3o4"]
+[ext_resource type="AudioStream" uid="uid://0b8x3s4f0qgp" path="res://resources/audio/Track1_Declick.wav" id="7_0gdoo"]
 
 [sub_resource type="Gradient" id="Gradient_ks3h4"]
 colors = PackedColorArray(0.447059, 0.447059, 0.447059, 0.470588, 1, 1, 1, 1)
@@ -108,3 +109,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
 
 [node name="Who" parent="." instance=ExtResource("9_me3o4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -7)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0gdoo")
+volume_db = -8.0
+autoplay = true
