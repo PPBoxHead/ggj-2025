@@ -10,6 +10,8 @@ var tween
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var head_marker: Marker3D = $HeadMarker
+
 @onready var front_ray_cast: RayCast3D = $RaysMarker/FrontRayCast
 @onready var back_ray_cast: RayCast3D = $RaysMarker/BackRayCast
 @onready var left_ray_cast: RayCast3D = $RaysMarker/LeftRayCast
@@ -29,8 +31,9 @@ func _physics_process(_delta: float) -> void:
 		if tween.is_running():
 			return
 	
-	_handle_direction()
-	_handle_rotation()
+	if !head_marker.lock_view:
+		_handle_direction()
+		_handle_rotation()
 
 
 func _handle_direction() -> void:
