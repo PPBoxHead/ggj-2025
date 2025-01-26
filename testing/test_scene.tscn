@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp76ethtax6kg"]
+[gd_scene load_steps=10 format=3 uid="uid://dp76ethtax6kg"]
 
 [ext_resource type="Environment" uid="uid://dwg78d02iv6ch" path="res://resources/def_environment.tres" id="1_gkbi2"]
 [ext_resource type="PackedScene" uid="uid://cficrvdl56q2a" path="res://characters/player/player.tscn" id="3_bjgjy"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://0b8x3s4f0qgp" path="res://resources/audio/Track1_Declick.wav" id="7_0gdoo"]
 [ext_resource type="PackedScene" uid="uid://c4uq03n77pq1e" path="res://characters/enemies/masked.tscn" id="7_h2h7l"]
 [ext_resource type="PackedScene" uid="uid://cpdjcxawgava6" path="res://characters/enemies/twoside.tscn" id="7_i4uh7"]
+[ext_resource type="PackedScene" uid="uid://cy11r0ax0oc6c" path="res://screens/combat_ui.tscn" id="7_iyke2"]
 [ext_resource type="PackedScene" uid="uid://dbhsucw0xegng" path="res://characters/enemies/unmasked.tscn" id="8_yudw1"]
 [ext_resource type="PackedScene" uid="uid://bw2o1wxjppp0p" path="res://characters/enemies/who.tscn" id="9_me3o4"]
 
@@ -18,6 +19,9 @@ environment = ExtResource("1_gkbi2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="school" parent="." instance=ExtResource("5_6l23h")]
+
+[node name="CombatUi" parent="." instance=ExtResource("7_iyke2")]
+visible = false
 
 [node name="Masked" parent="." instance=ExtResource("7_h2h7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9)

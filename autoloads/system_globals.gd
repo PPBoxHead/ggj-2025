@@ -21,6 +21,7 @@ var _status_progress: Array = []
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _enter_tree() -> void:
 	randomize()
@@ -31,6 +32,7 @@ func _ready() -> void:
 	SystemEvents.game_run_finished.connect(_game_run_finished)
 	
 	SystemEvents.bubble_soap_collected.connect(set_soap_value)
+	rng.randomize()
 
 
 func set_soap_value(value: int) -> void:

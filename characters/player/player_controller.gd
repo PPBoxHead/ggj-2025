@@ -75,3 +75,7 @@ func _move_direction(local_direction: Vector3) -> void:
 	audio_player.stream = steps_sfx[rand_num]
 	audio_player.play()
 		
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	SystemEvents.start_combat.emit(area.get_parent())
