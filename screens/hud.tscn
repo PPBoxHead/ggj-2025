@@ -1,0 +1,130 @@
+[gd_scene load_steps=8 format=3 uid="uid://cuu3l670vfemu"]
+
+[ext_resource type="Texture2D" uid="uid://dd1kqqodexq7r" path="res://screens/Sprite-0004.png" id="1_bmhji"]
+[ext_resource type="Texture2D" uid="uid://ktb636f3gj2r" path="res://screens/GGJ-2025-HUD.png" id="1_swvo6"]
+[ext_resource type="Texture2D" uid="uid://bbu5uxmgpkirx" path="res://screens/Sprite-0004_mask.png" id="2_f8lgg"]
+[ext_resource type="Texture2D" uid="uid://bay57uomk6lqa" path="res://resources/sprites/Bubbles.png" id="2_sq7sj"]
+[ext_resource type="Material" uid="uid://mxx27dtkavte" path="res://resources/shaders/soap_bar.material" id="2_tux3g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cwoui"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_li1wr"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 32.0
+direction = Vector3(0, 0, 0)
+angular_velocity_min = -45.0
+angular_velocity_max = 45.0
+gravity = Vector3(0, -98, 0)
+anim_speed_max = 4.45
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanisterRect-4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 288.0
+offset_right = 574.0
+offset_bottom = 399.0
+texture = ExtResource("1_bmhji")
+stretch_mode = 2
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="CanisterRect-4"]
+visible = false
+material = ExtResource("2_tux3g")
+layout_mode = 0
+offset_left = 69.0
+offset_top = 45.0
+offset_right = 112.0
+offset_bottom = 67.0
+texture = ExtResource("2_f8lgg")
+stretch_mode = 2
+
+[node name="CanisterRect-3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 288.0
+offset_right = 486.0
+offset_bottom = 399.0
+texture = ExtResource("1_bmhji")
+stretch_mode = 2
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="CanisterRect-3"]
+visible = false
+material = ExtResource("2_tux3g")
+layout_mode = 0
+offset_left = 69.0
+offset_top = 45.0
+offset_right = 112.0
+offset_bottom = 67.0
+texture = ExtResource("2_f8lgg")
+stretch_mode = 2
+
+[node name="CanisterRect-2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 288.0
+offset_right = 398.0
+offset_bottom = 399.0
+texture = ExtResource("1_bmhji")
+stretch_mode = 2
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="CanisterRect-2"]
+visible = false
+material = ExtResource("2_tux3g")
+layout_mode = 0
+offset_left = 69.0
+offset_top = 45.0
+offset_right = 112.0
+offset_bottom = 67.0
+texture = ExtResource("2_f8lgg")
+stretch_mode = 2
+
+[node name="CanisterRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 288.0
+offset_right = 310.0
+offset_bottom = 399.0
+texture = ExtResource("1_bmhji")
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="CanisterRect"]
+visible = false
+material = ExtResource("2_tux3g")
+layout_mode = 0
+offset_left = 69.0
+offset_top = 45.0
+offset_right = 112.0
+offset_bottom = 67.0
+texture = ExtResource("2_f8lgg")
+stretch_mode = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_cwoui")
+position = Vector2(552, 136)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_li1wr")
+texture = ExtResource("2_sq7sj")
+lifetime = 1.2
+
+[node name="HUDTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 400.0
+mouse_filter = 2
+texture = ExtResource("1_swvo6")

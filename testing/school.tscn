@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bvxofltatwnic" path="res://resources/textures/Photoreal_Wood_06-512x512.png" id="6_ongqv"]
 [ext_resource type="Texture2D" uid="uid://bcqky5inu6hyp" path="res://resources/textures/Bricks_25-128x128.png" id="7_t0i48"]
 [ext_resource type="Texture2D" uid="uid://de8pj4xopbklu" path="res://resources/textures/Grass_12-128x128.png" id="8_opq1v"]
-[ext_resource type="Texture2D" uid="uid://ccobwgwh5fwie" path="res://resources/textures/Tile_09-128x128.png" id="9_2j6nc"]
 [ext_resource type="Texture2D" uid="uid://dnill5yho5aaf" path="res://resources/textures/peakpx.png" id="9_a2jku"]
+[ext_resource type="Texture2D" uid="uid://yu46hfxfw0d4" path="res://resources/textures/Locker.png" id="10_fkaxk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mphlq"]
 albedo_texture = ExtResource("2_qpku8")
@@ -41,8 +41,8 @@ albedo_texture = ExtResource("8_opq1v")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a15t0"]
 albedo_texture = ExtResource("9_a2jku")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4k67"]
-albedo_texture = ExtResource("9_2j6nc")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txny0"]
+albedo_texture = ExtResource("10_fkaxk")
 
 [node name="school" instance=ExtResource("1_mel0m")]
 
@@ -86,5 +86,5 @@ surface_material_override/1 = SubResource("StandardMaterial3D_j6npk")
 surface_material_override/0 = SubResource("StandardMaterial3D_8kxp8")
 surface_material_override/1 = SubResource("StandardMaterial3D_a15t0")
 
-[node name="Infirmary" parent="." index="14"]
-surface_material_override/0 = SubResource("StandardMaterial3D_f4k67")
+[node name="Lockers_001" parent="." index="15"]
+surface_material_override/0 = SubResource("StandardMaterial3D_txny0")
